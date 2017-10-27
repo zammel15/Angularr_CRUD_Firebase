@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-sm-6">
+      <h1>Students List</h1>
+
+    <h3>    <i class="fa fa-users" aria-hidden="true"></i>
+
+      Total Student :{{totalStudents}}</h3>
+
+  </div>
+
+</div>
+<div *ngIf="students?.length>0 ; else elseBock">
+  <table class="table table-inverse"  >
+    <thead>
+    <tr>
+
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students ">
+      <th>{{student.$key}}</th>
+      <th>{{student.firstName}}</th>
+      <th>{{student.lastName}}</th>
+
+      <th> <a href="#"  [routerLink]="['student/'+student.$key]" class="btn btn-primary">more Info </a></th>
+
+
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+<a href="#"  routerLink ="/add-student"  class="btn btn-warning">Add Student
+</a>
+
+
+<ng-template #elseBock> <h2>OOPS</h2></ng-template>
